@@ -1,26 +1,30 @@
 package com.example.kotlin_list.listview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.AdapterView
+import android.widget.ListView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.kotlin_list.KotlinApplication
 import com.example.kotlin_list.R
-import com.example.kotlin_list.database.DBGetter
 import com.example.kotlin_list.dialog.CustomDialog
 
 class MainActivity : AppCompatActivity() {
 
-    private val mListData: ArrayList<String> = ArrayList();
+    private val mListData: ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val mListView: ListView = findViewById(R.id.recipe_list_view);
+        val mListView: ListView = findViewById(R.id.recipe_list_view)
         setList(mListView)
         mListView.onItemClickListener = setOnClickListener()
 
 
 //        DBGetter(this).db.execSQL("select * from Account")
 
+
+        KotlinApplication.getInstance.instance
 
         val mDialog = CustomDialog(this)
         mDialog.show()
@@ -47,9 +51,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListener(): AdapterView.OnItemClickListener {
-        return AdapterView.OnItemClickListener{ adapterView: AdapterView<*>, view1: View, i: Int, l: Long ->
-            val item = mListData.get(i)
-            Toast.makeText(this, "Clicked $i $item", Toast.LENGTH_LONG).show()
+        return AdapterView.OnItemClickListener{ _: AdapterView<*>, _: View, i: Int, _: Long ->
+            val item = mListData[i]
+            Toast.makeText(this, "Clicked ${i+1} $item", Toast.LENGTH_SHORT).show()
         }
     }
 
