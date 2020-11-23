@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 //
 //        val mDialog = CustomDialog(this)
 //        mDialog.show()
-        showFrament()
+        showFragment()
     }
 
 
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun showFrament(){
+    private fun showFragment(){
         val fragment: FragmentTransaction = supportFragmentManager.beginTransaction()
         val mKotlinFragment = KotlinFragment()
         fragment.add(R.id.frame_container01, mKotlinFragment).commit()
