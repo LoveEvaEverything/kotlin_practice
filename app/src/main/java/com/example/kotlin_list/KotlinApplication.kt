@@ -9,6 +9,10 @@ class KotlinApplication: Application() {
     object getInstance {
         var instance = this
     }
+    companion object{
+        fun setData(){}
+
+    }
 
     override fun onCreate() {
         super.onCreate()
